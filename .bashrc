@@ -14,4 +14,4 @@ alias ff='fastfetch'
 eval "$(fzf --bash)"
 
 PS1='\u@\h[\W]$ '
-alias config='/usr/bin/git --git-dir=/home/mirth/.cfg/ --work-tree=/home/mirth'
+alias dotfiles='/usr/bin/git --git-dir=/home/mirth/.dotfiles/ --work-tree=/home/mirth'
