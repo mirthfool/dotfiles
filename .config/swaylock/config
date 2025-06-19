@@ -1,5 +1,5 @@
 # Set background image
-image=./gruvboxCyborg.png
+image='./gruvboxCyborg.png'
 
 indicator-radius=75
 
