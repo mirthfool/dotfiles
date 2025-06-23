@@ -20,7 +20,6 @@ set $menu fuzzel
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg ./gruvboxCyborg.png fill
 #
 # Example configuration:
@@ -28,7 +27,7 @@ output * bg ./gruvboxCyborg.png fill
 
 output eDP-1 scale 1 pos 0 0 resolution 1920x1080
 
-output HDMI-A-1 resolution 2560x1440 pos 0 0
+output HDMI-A-1 resolution 2560x1440 pos 1920 0
 
 exec_always ~/.config/sway/display-setup.sh
 
