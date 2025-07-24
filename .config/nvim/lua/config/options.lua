@@ -31,8 +31,6 @@ vim.opt.hlsearch = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.o.laststatus = 1
-
 vim.g.netrw_liststyle = 0
 
 vim.opt.textwidth = 80
