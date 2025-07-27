@@ -54,7 +54,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
-        { "ellisonleao/gruvbox.nvim" },
+        { "sainnhe/sonokai" },
         { "echasnovski/mini.pick" },
         { "neovim/nvim-lspconfig" },
     },
@@ -86,7 +86,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme sonokai")
 vim.cmd(":hi statusline guibg=NONE")
 
 vim.diagnostic.config({
