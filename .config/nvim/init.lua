@@ -68,22 +68,36 @@ require("mini.pick").setup()
 vim.keymap.set("n", "<leader>f", ":Pick files<CR>")
 vim.keymap.set("n", "<leader>h", ":Pick help<CR>")
 vim.keymap.set("n", "<leader>e", ":Ex<CR>")
+vim.keymap.set("i", "<C-c>", "<Esc>")
 
-vim.keymap.set({"n", "v", "x"}, "<leader>y", '"+y<CR>')
-vim.keymap.set({"n", "v", "x"}, "<leader>d", '"+d<CR>')
+vim.keymap.set({ "n", "v", "x" }, "<leader>y", '"+y<CR>')
+vim.keymap.set({ "n", "v", "x" }, "<leader>d", '"+d<CR>')
 
 vim.lsp.enable({ "lua_ls", "clangd", })
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
 vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function (ev)
+    callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
         if client:supports_method('textDocument/completion') then
-            vim.lsp.completion.enable(true, client.id, ev.buf, {autotrigger = true})
+            vim.opt.completeopt = { "menu", "menuone", "popup", "noselect" }
+            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
         end
     end,
 })
-vim.cmd("set completeopt+=noselect")
 
 vim.cmd("colorscheme gruvbox")
 vim.cmd(":hi statusline guibg=NONE")
+
+vim.diagnostic.config({
+    virtual_lines = {
+        current_line = true,
+    },
+    update_in_insert = false,
+})
+
+vim.api.nvim_create_autocmd('InsertLeave', {
+    callback = function()
+        vim.diagnostic.show()
+    end,
+})
