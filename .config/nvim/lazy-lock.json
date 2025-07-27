@@ -1,6 +1,6 @@
 {
-  "flexoki.nvim": { "branch": "main", "commit": "5fad67edf3c71381f2b044bb7aeb8261996c0d2a" },
-  "fzf-lua": { "branch": "main", "commit": "f8805989fc8f164ea3fab37bdec963add9576964" },
+  "gruvbox.nvim": { "branch": "main", "commit": "58a2cda2e953a99e2f87c12b7fb4602da4e0709c" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
-  "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" }
+  "mini.pick": { "branch": "main", "commit": "c8f4ff0251ccb8c6a993ee0dee4e06d9c21a4b99" },
+  "nvim-lspconfig": { "branch": "master", "commit": "4d3b3bb8815fbe37bcaf3dbdb12a22382bc11ebe" }
 }
