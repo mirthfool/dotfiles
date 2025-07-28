@@ -75,6 +75,7 @@ vim.keymap.set({ "n", "v", "x" }, "<leader>d", '"+d<CR>')
 
 vim.lsp.enable({ "lua_ls", "clangd", })
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
+vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 
 vim.cmd("colorscheme sonokai")
 vim.cmd(":hi statusline guibg=NONE")
