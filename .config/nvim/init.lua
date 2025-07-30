@@ -49,36 +49,45 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
-
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
-        { "sainnhe/sonokai" },
-        { "echasnovski/mini.pick" },
         { "neovim/nvim-lspconfig" },
+        { "sainnhe/sonokai" },
     },
     install = {},
     -- automatically check for plugin updates
     checker = { enabled = true },
 })
 
-require("mini.pick").setup()
+vim.cmd("colorscheme sonokai")
+vim.opt.path = { ".", "**" }
 
-vim.keymap.set("n", "<leader>f", ":Pick files<CR>")
-vim.keymap.set("n", "<leader>h", ":Pick help<CR>")
-vim.keymap.set("n", "<leader>e", ":Ex<CR>")
+vim.keymap.set("n", "<leader>s", [[:vimgrep // **<left><left><left><left>]])
+vim.keymap.set("n", "<leader>f", ":find ")
+vim.keymap.set("n", "<leader>d", function() vim.diagnostic.setqflist({}) end)
+
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
-vim.keymap.set({ "n", "v", "x" }, "<leader>y", '"+y<CR>')
-vim.keymap.set({ "n", "v", "x" }, "<leader>d", '"+d<CR>')
+vim.keymap.set("n", "<M-j>", ":cnext<CR>")
+vim.keymap.set("n", "<M-k>", ":cprev<CR>")
+vim.keymap.set("n", "<M-l>", ":cnewer<CR>")
+vim.keymap.set("n", "<M-h>", ":colder<CR>")
 
+vim.keymap.set({ "n", "v", "x" }, "<leader>y", '"+y<CR>')
+
+require('lspconfig').gdscript.setup({
+    cmd = { "nc", "127.0.0.1", "6005" },
+    filetypes = { "gd", "gdscript" },
+    root_dir = require('lspconfig').util.root_pattern("project.godot", ".git"),
+})
 vim.lsp.enable({ "lua_ls", "clangd", })
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 
-vim.cmd("colorscheme sonokai")
 vim.cmd(":hi statusline guibg=NONE")
+vim.cmd(":hi NormalFloat guibg=NONE")
+vim.cmd(":hi FloatBorder guibg=NONE")
 
 vim.diagnostic.config({
     virtual_lines = {
@@ -91,4 +100,11 @@ vim.api.nvim_create_autocmd('InsertLeave', {
     callback = function()
         vim.diagnostic.show()
     end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.path = { ".", "**" }
+  end,
 })
