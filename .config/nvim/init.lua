@@ -1,3 +1,4 @@
+-- Options
 vim.o.guicursor = ""
 
 vim.o.number = true
@@ -31,22 +32,31 @@ vim.o.winborder = "rounded"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Colorscheme options
 vim.cmd("colorscheme sonokai")
-vim.opt.path = { ".", "**" }
 
+vim.cmd(":hi statusline guibg=NONE")
+vim.cmd(":hi NormalFloat guibg=NONE")
+vim.cmd(":hi FloatBorder guibg=NONE")
+
+-- Keymaps
 vim.keymap.set("n", "<leader>s", [[:vimgrep // **<left><left><left><left>]])
-vim.keymap.set("n", "<leader>f", ":find ")
-vim.keymap.set("n", "<leader>d", function() vim.diagnostic.setqflist({}) end)
+vim.keymap.set("n", "<leader>d", function() vim.diagnostic.setqflist() end)
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set({ "n", "v", "x" }, "<leader>y", '"+y<CR>')
 
 vim.keymap.set("n", "<M-j>", ":cnext<CR>")
 vim.keymap.set("n", "<M-k>", ":cprev<CR>")
 vim.keymap.set("n", "<M-l>", ":cnewer<CR>")
 vim.keymap.set("n", "<M-h>", ":colder<CR>")
 
-vim.keymap.set({ "n", "v", "x" }, "<leader>y", '"+y<CR>')
+vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk_inline<CR>")
+vim.keymap.set("n", "<leader>gq", function() require("gitsigns").setqflist('all') end)
+vim.keymap.set("n", "<leader>gs", ":Gitsigns stage_hunk<CR>")
+vim.keymap.set("n", "<leader>gu", ":Gitsigns undo_stage_hunk<CR>")
 
+-- Lsp Options
 require('lspconfig').gdscript.setup({
     cmd = { "nc", "127.0.0.1", "6005" },
     filetypes = { "gd", "gdscript" },
@@ -56,26 +66,11 @@ vim.lsp.enable({ "lua_ls", "clangd", })
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 
-vim.cmd(":hi statusline guibg=NONE")
-vim.cmd(":hi NormalFloat guibg=NONE")
-vim.cmd(":hi FloatBorder guibg=NONE")
-
 vim.diagnostic.config({
-    virtual_lines = {
-        current_line = true,
-    },
+    virtual_text = true,
+    signs = false,
     update_in_insert = false,
 })
 
-vim.api.nvim_create_autocmd('InsertLeave', {
-    callback = function()
-        vim.diagnostic.show()
-    end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "*",
-  callback = function()
-    vim.opt_local.path = { ".", "**" }
-  end,
-})
+-- Gitsigns
+require('gitsigns').setup({})
