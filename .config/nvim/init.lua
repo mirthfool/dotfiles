@@ -42,6 +42,7 @@ vim.cmd(":hi FloatBorder guibg=NONE")
 -- Keymaps
 vim.keymap.set("n", "<leader>s", [[:vimgrep // **<left><left><left><left>]])
 vim.keymap.set("n", "<leader>d", function() vim.diagnostic.setqflist() end)
+vim.keymap.set("n", "<leader>f", ":set path=.,**<CR>:find ")
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set({ "n", "v", "x" }, "<leader>y", '"+y<CR>')
@@ -63,6 +64,16 @@ require('lspconfig').gdscript.setup({
     root_dir = require('lspconfig').util.root_pattern("project.godot", ".git"),
 })
 vim.lsp.enable({ "lua_ls", "clangd", })
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+            }
+        }
+    }
+})
+
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 
