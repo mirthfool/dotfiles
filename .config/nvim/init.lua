@@ -32,6 +32,15 @@ vim.o.winborder = "rounded"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Findfunc
+vim.cmd([[
+function! MyFindFunc(cmdarg, cmdcomplete) abort
+  let pat = a:cmdcomplete ? (a:cmdarg .. '*') : a:cmdarg
+  return globpath('.', '**/' .. pat, v:false, v:true)
+endfunction
+set findfunc=MyFindFunc
+]])
+
 -- Colorscheme options
 vim.cmd("colorscheme sonokai")
 
@@ -42,7 +51,7 @@ vim.cmd(":hi FloatBorder guibg=NONE")
 -- Keymaps
 vim.keymap.set("n", "<leader>s", [[:vimgrep // **<left><left><left><left>]])
 vim.keymap.set("n", "<leader>d", function() vim.diagnostic.setqflist() end)
-vim.keymap.set("n", "<leader>f", ":set path=.,**<CR>:find ")
+vim.keymap.set("n", "<leader>f", ":find ")
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set({ "n", "v", "x" }, "<leader>y", '"+y<CR>')
@@ -63,7 +72,7 @@ require('lspconfig').gdscript.setup({
     filetypes = { "gd", "gdscript" },
     root_dir = require('lspconfig').util.root_pattern("project.godot", ".git"),
 })
-vim.lsp.enable({ "lua_ls", "clangd", })
+vim.lsp.enable({ "lua_ls", "clangd", "rust_analyzer"})
 vim.lsp.config("lua_ls", {
     settings = {
         Lua = {

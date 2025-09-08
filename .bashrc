@@ -15,3 +15,4 @@ eval "$(fzf --bash)"
 
 PS1='\u@\h[\W]$ '
 alias dotfiles='/usr/bin/git --git-dir=/home/mirth/.dotfiles/ --work-tree=/home/mirth'
+. "$HOME/.cargo/env"
