@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/mirth/.config/wallpaper.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Random Wallpaper
+Comment=Set random wallpaper on login
+
