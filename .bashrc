@@ -8,8 +8,9 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-alias vim='nvim'
 alias ff='fastfetch'
+
+alias wall='./.config/wallpaper.sh'
 
 eval "$(fzf --bash)"
 
