@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/home/mirth/.config/wallpaper.sh
+Exec=/home/mirth/.config/scripts/wallpaper.sh
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
