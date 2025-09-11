@@ -44,7 +44,10 @@ set findfunc=MyFindFunc
 -- Colorscheme options
 vim.cmd("colorscheme sonokai")
 
-vim.cmd(":hi statusline guibg=NONE")
+-- vim.cmd(":hi Normal guibg=NONE")
+-- vim.cmd(":hi NormalNC guibg=NONE")
+-- vim.cmd(":hi CursorLine guibg=NONE")
+vim.cmd(":hi statuslineNC guibg=NONE")
 vim.cmd(":hi NormalFloat guibg=NONE")
 vim.cmd(":hi FloatBorder guibg=NONE")
 

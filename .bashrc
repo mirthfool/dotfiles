@@ -10,7 +10,7 @@ alias grep='grep --color=auto'
 
 alias ff='fastfetch'
 
-alias wall='./.config/wallpaper.sh'
+alias wall='./.config/scripts/wallpaper.sh'
 
 eval "$(fzf --bash)"
 
