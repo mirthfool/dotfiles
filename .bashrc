@@ -8,8 +8,6 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-alias ff='fastfetch'
-
 alias wall='$HOME/.config/scripts/wallpaper.sh'
 
 alias tm='/home/mirth/.config/scripts/tmux-sessions.sh'
