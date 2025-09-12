@@ -10,7 +10,7 @@ alias grep='grep --color=auto'
 
 alias ff='fastfetch'
 
-alias wall='./.config/scripts/wallpaper.sh'
+alias wall='$HOME/.config/scripts/wallpaper.sh'
 
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux attach-session -t default || tmux new-session -s default
