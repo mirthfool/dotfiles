@@ -12,6 +12,10 @@ alias ff='fastfetch'
 
 alias wall='./.config/scripts/wallpaper.sh'
 
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach-session -t default || tmux new-session -s default
+fi
+
 eval "$(fzf --bash)"
 
 PS1='\u@\h[\W]$ '
