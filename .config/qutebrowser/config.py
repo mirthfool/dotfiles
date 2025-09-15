@@ -13,7 +13,7 @@
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
 
-config.set('content.cookies.accept', 'never')
+config.set('content.cookies.accept', 'all')
 
 # User agent to send.  The following placeholders are defined:  *
 # `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
