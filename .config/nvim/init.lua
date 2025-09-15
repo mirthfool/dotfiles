@@ -8,7 +8,9 @@ vim.o.relativenumber = true
 vim.o.numberwidth = 1
 vim.o.signcolumn = 'yes:1'
 
-vim.o.wrap = false
+vim.o.wrap = true
+vim.o.linebreak = true
+vim.o.breakindent = false
 vim.o.scrolloff = 999
 vim.o.sidescrolloff = 10
 
