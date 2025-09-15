@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 mkdir -p "$HOME/.config/nvim/pack/plugins/start"
 
 if [[ ! -f "plugins.txt" ]]; then
