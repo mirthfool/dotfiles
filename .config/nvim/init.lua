@@ -46,7 +46,7 @@ set findfunc=MyFindFunc
 ]])
 
 -- Colorscheme options
-vim.cmd("colorscheme sonokai")
+vim.cmd("colorscheme vague")
 
 vim.cmd(":hi Normal guibg=NONE")
 vim.cmd(":hi NormalNC guibg=NONE")
