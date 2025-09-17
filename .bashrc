@@ -12,8 +12,9 @@ alias grep='grep --color=auto'
 
 alias wall='$HOME/.config/scripts/wallpaper.sh'
 
-alias tm='/home/mirth/.config/scripts/tmux-sessions.sh'
+alias tm='$HOME/.config/scripts/tmux-sessions.sh'
 
+source $HOME/.config/scripts/fzf_vague.sh
 
 eval "$(fzf --bash)"
 
