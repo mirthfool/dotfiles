@@ -14,8 +14,6 @@ alias wall='$HOME/.config/scripts/wallpaper.sh'
 
 alias tm='$HOME/.config/scripts/tmux-sessions.sh'
 
-source $HOME/.config/scripts/fzf_vague.sh
-
 eval "$(fzf --bash)"
 
 PS1='\u@\h[\W]$ '
