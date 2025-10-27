@@ -6,7 +6,7 @@ vim.o.termguicolors = true
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.numberwidth = 1
-vim.o.signcolumn = 'yes:1'
+vim.o.signcolumn = 'yes'
 
 vim.o.wrap = false
 vim.o.scrolloff = 999
@@ -29,57 +29,61 @@ vim.o.hlsearch = false
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
-vim.o.winborder = "rounded"
+vim.o.winborder = "bold"
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Findfunc
-vim.cmd([[
-function! MyFindFunc(cmdarg, cmdcomplete) abort
-  let pat = a:cmdcomplete ? (a:cmdarg .. '*') : a:cmdarg
-  return globpath('.', '**/' .. pat, v:false, v:true)
-endfunction
-set findfunc=MyFindFunc
-]])
-
 -- Colorscheme options
+vim.g.nord_bold = false
 vim.cmd("colorscheme nord")
-
-vim.cmd(":hi Normal guibg=NONE")
-vim.cmd(":hi NormalNC guibg=NONE")
-vim.cmd(":hi CursorLine guibg=NONE")
-vim.cmd(":hi statuslineNC guibg=NONE")
 vim.cmd(":hi statusline guibg=NONE")
-vim.cmd(":hi SignColumn guibg=NONE")
-vim.cmd(":hi NormalFloat guibg=NONE")
-vim.cmd(":hi FloatBorder guibg=NONE")
+vim.cmd(":hi statuslineNC guibg=NONE")
+
+-- Plugins
+require "mini.pick".setup({
+    window = {
+        config = function()
+            local height = math.floor(0.618 * vim.o.lines)
+            local width = math.floor(0.618 * vim.o.columns)
+            return {
+                anchor = 'NW',
+                height = height,
+                width = width,
+                row = math.floor(0.5 * (vim.o.lines - height)),
+                col = math.floor(0.5 * (vim.o.columns - width)),
+            }
+        end
+    },
+})
+require "mini.files".setup({
+    mappings = {
+        synchronize = 'w'
+    }
+})
+require "gitsigns".setup()
 
 -- Keymaps
-vim.keymap.set("n", "<leader>s", [[:vimgrep // **<left><left><left><left>]])
 vim.keymap.set("n", "<leader>d", function() vim.diagnostic.setqflist() end)
-vim.keymap.set("n", "<leader>f", ":find ")
+vim.keymap.set("n", "<leader>f", "<cmd>Pick files<CR>")
+vim.keymap.set("n", "<leader>s", "<cmd>Pick grep_live<CR>")
+vim.keymap.set("n", "<leader>h", "<cmd>Pick help<CR>")
+vim.keymap.set("n", "<leader>e", function() MiniFiles.open() end)
+
+vim.keymap.set("n", "<leader>gg", "<cmd>Gitsigns setqflist all<CR>")
+vim.keymap.set("n", "<leader>gp", "<cmd>Gitsigns preview_hunk_inline<CR>")
+vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame<CR>")
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set({ "n", "v", "x" }, "<leader>y", '"+y<CR>')
 
-vim.keymap.set("n", "<M-j>", ":cnext<CR>")
-vim.keymap.set("n", "<M-k>", ":cprev<CR>")
-vim.keymap.set("n", "<M-l>", ":cnewer<CR>")
-vim.keymap.set("n", "<M-h>", ":colder<CR>")
-
-vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk_inline<CR>")
-vim.keymap.set("n", "<leader>gq", function() require("gitsigns").setqflist('all') end)
-vim.keymap.set("n", "<leader>gs", ":Gitsigns stage_hunk<CR>")
-vim.keymap.set("n", "<leader>gu", ":Gitsigns undo_stage_hunk<CR>")
+vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
+vim.keymap.set("n", "<M-l>", "<cmd>cnewer<CR>")
+vim.keymap.set("n", "<M-h>", "<cmd>colder<CR>")
 
 -- Lsp Options
-require('lspconfig').gdscript.setup({
-    cmd = { "nc", "127.0.0.1", "6005" },
-    filetypes = { "gd", "gdscript" },
-    root_dir = require('lspconfig').util.root_pattern("project.godot", ".git"),
-})
-vim.lsp.enable({ "lua_ls", "clangd", "rust_analyzer"})
+vim.lsp.enable({ "lua_ls", "clangd", "rust_analyzer" })
 vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
@@ -98,6 +102,3 @@ vim.diagnostic.config({
     signs = false,
     update_in_insert = false,
 })
-
--- Gitsigns
-require('gitsigns').setup({})

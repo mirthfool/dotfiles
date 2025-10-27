@@ -1,3 +1,5 @@
 https://github.com/neovim/nvim-lspconfig.git
-https://github.com/gbprod/nord.nvim.git
+https://github.com/shaunsingh/nord.nvim.git
+https://github.com/nvim-mini/mini.pick.git
+https://github.com/nvim-mini/mini.files.git
 https://github.com/lewis6991/gitsigns.nvim.git

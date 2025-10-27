@@ -7,7 +7,14 @@
 
 export HISTSTIZE=
 
-alias ls='ls --color=auto'
+export FZF_DEFAULT_OPTS="
+  --color=fg:#D8DEE9,bg:#2E3440,hl:#88C0D0 \
+  --color=fg+:#ECEFF4,bg+:#3B4252,hl+:#8FBCBB \
+  --color=info:#81A1C1,prompt:#A3BE8C,pointer:#BF616A \
+  --color=marker:#EBCB8B,spinner:#B48EAD,header:#5E81AC
+"
+
+alias ls='ls -C --color=auto'
 alias grep='grep --color=auto'
 
 alias wall='$HOME/.config/scripts/wallpaper.sh'
