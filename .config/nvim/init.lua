@@ -36,7 +36,7 @@ vim.g.maplocalleader = " "
 
 -- Colorscheme options
 vim.g.nord_bold = false
-vim.cmd("colorscheme nord")
+vim.cmd("colorscheme kanso-mist")
 vim.cmd(":hi statusline guibg=NONE")
 vim.cmd(":hi statuslineNC guibg=NONE")
 
@@ -55,11 +55,6 @@ require "mini.pick".setup({
             }
         end
     },
-})
-require "mini.files".setup({
-    mappings = {
-        synchronize = 'w'
-    }
 })
 require "gitsigns".setup()
 
