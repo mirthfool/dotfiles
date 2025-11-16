@@ -2,3 +2,4 @@ https://github.com/neovim/nvim-lspconfig.git
 https://github.com/webhooked/kanso.nvim.git
 https://github.com/nvim-mini/mini.pick.git
 https://github.com/lewis6991/gitsigns.nvim.git
+https://github.com/stevearc/quicker.nvim.git

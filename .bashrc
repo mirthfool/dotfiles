@@ -8,10 +8,10 @@
 export HISTSTIZE=
 
 export FZF_DEFAULT_OPTS="
-  --color=fg:#D8DEE9,bg:#2E3440,hl:#88C0D0 \
-  --color=fg+:#ECEFF4,bg+:#3B4252,hl+:#8FBCBB \
-  --color=info:#81A1C1,prompt:#A3BE8C,pointer:#BF616A \
-  --color=marker:#EBCB8B,spinner:#B48EAD,header:#5E81AC
+  --color=fg:#c5c9c7,bg:#23262d,hl:#8ba4b0 \
+  --color=fg+:#c5c9c7,bg+:#43464e,hl+:#7fb4ca \
+  --color=info:#72a7bc,prompt:#8a9a7b,pointer:#c4746e \
+  --color=marker:#c4b28a,spinner:#938aa9,header:#a292a3
 "
 
 alias ls='ls -C --color=auto'

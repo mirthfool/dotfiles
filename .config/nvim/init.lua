@@ -35,12 +35,22 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Colorscheme options
-vim.g.nord_bold = false
 vim.cmd("colorscheme kanso-mist")
 vim.cmd(":hi statusline guibg=NONE")
 vim.cmd(":hi statuslineNC guibg=NONE")
 
 -- Plugins
+require "gitsigns".setup()
+require("quicker").setup({
+    keys = {
+        { ">", function() require("quicker").expand({ before = 2, after = 2, add_to_existing = true }) end },
+        { "<", function() require("quicker").collapse() end },
+    },
+})
+local choose_all = function()
+    local mappings = MiniPick.get_picker_opts().mappings
+    vim.api.nvim_input(mappings.mark_all .. mappings.choose_marked)
+end
 require "mini.pick".setup({
     window = {
         config = function()
@@ -55,8 +65,10 @@ require "mini.pick".setup({
             }
         end
     },
+    mappings = {
+        choose_all = { char = "<C-q>", func = choose_all },
+    },
 })
-require "gitsigns".setup()
 
 -- Keymaps
 vim.keymap.set("n", "<leader>d", function() vim.diagnostic.setqflist() end)
