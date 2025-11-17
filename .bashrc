@@ -14,6 +14,12 @@ export FZF_DEFAULT_OPTS="
   --color=marker:#c4b28a,spinner:#938aa9,header:#a292a3
 "
 
+set -o vi
+bind -m vi-command 'Control-l: clear-screen'
+bind -m vi-insert 'Control-l: clear-screen'
+
+export EDITOR="/usr/bin/nvim"
+
 alias ls='ls -C --color=auto'
 alias grep='grep --color=auto'
 
