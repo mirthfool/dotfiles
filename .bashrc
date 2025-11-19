@@ -23,9 +23,10 @@ export EDITOR="/usr/bin/nvim"
 alias ls='ls -C --color=auto'
 alias grep='grep --color=auto'
 
-alias wall='$HOME/.config/scripts/wallpaper.sh'
+alias ff='fastfetch'
 
 alias tm='$HOME/.config/scripts/tmux-sessions.sh'
+alias wall='$HOME/.config/scripts/wallpaper.sh'
 
 eval "$(fzf --bash)"
 
