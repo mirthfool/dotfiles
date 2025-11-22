@@ -26,7 +26,6 @@ alias grep='grep --color=auto'
 alias ff='fastfetch'
 
 alias tm='$HOME/.config/scripts/tmux-sessions.sh'
-alias wall='$HOME/.config/scripts/wallpaper.sh'
 
 eval "$(fzf --bash)"
 
